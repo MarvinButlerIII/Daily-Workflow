@@ -1,0 +1,28 @@
+// Polymorphism bell example
+
+const bicycle = {
+    bell: function() {
+        return "Ring, ring! Watch out, please!";
+    }
+}
+const door = {
+    bell: function() {
+        return "Ring, ring! Come here, please!";
+    }
+}
+bicycle.bell();
+door.bell;
+//you can access the bell() method on each object like this
+
+// Make this code truly polymorphic by adding another function declaration.
+
+function ringTheBell(thing) {
+    console.log(thing.bell());
+}
+//declared function that accepts 'thing' parameter which expects to be an object,
+//namely, either the bicycle object or the door object.
+
+// Now you can invoke ringTheBell() with either object
+
+ringTheBell(bicycle); // "Ring, ring! Watch out, please!"
+ringTheBell(door); // "Ring, ring! Come here, please!"

@@ -1,0 +1,7 @@
+// More common method of creating objects from classes using the new keyword
+
+class Animal { /* ...class code here... */ }
+
+var myDog = new Animal()
+
+console.log(Animal) // [class Animal]

@@ -1,0 +1,31 @@
+// Using Classes Example
+
+class Bird {
+    useWings() {
+        console.log("Flying!");
+    }
+}
+class Eagle extends Bird {
+    useWings() {
+        super.useWings();
+        console.log("Barely flapping!");
+    }
+}
+class Penguin extends Bird {
+    useWings() {
+        console.log("Diving");
+    }
+}
+var baldEagle = new Eagle();
+var kingPenguin = new Penguin();
+baldEagle.useWings(); // "Flying! Barely flapping!"
+kingPenguin.useWings(); // "Diving"
+
+//super keyword calls methods from parent class.
+//Eagle class, super.useWings() invokes the useWings() method from Bird class, 
+//allowing the Eagle class to extend its behavior by adding "Barely flapping!" after calling the parent method
+//Penguin and Eagle sub-classes both inherit fromthe Bird super-class
+//Eagle sub-class inherits useWings() method from the Bird class, but extends
+//it with and additional console log.
+//Penguin sub-class doesn't inherit the useWings() method instead, it has its own implementation.
+//although the penguin class itself does extend the Bird class.

@@ -1,0 +1,7 @@
+// Utilization of Object.create() method to create or instantiate objects of our classes.
+
+class Animal { /* ...class code here... */ }
+
+var myDog = Object.create(Animal)
+
+console.log (Animal) // [class Animal]

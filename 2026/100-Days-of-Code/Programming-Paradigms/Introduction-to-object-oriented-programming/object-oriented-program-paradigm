@@ -1,0 +1,36 @@
+// Object-oriented programming paradigm approach
+
+var purchase1 = { //functions inside objects are known as methods
+    shoes: 100,
+    statTax: 1.2,
+    totalPrice: function() {
+        var calculation = purchase1.shoes * purchase1.statTax;
+        console.log('Total price:' , calculation);
+    }
+}
+
+// Another Object-oriented Programming approach, you can build however objects you need.
+
+var purchase2 = {
+    sheos: 50,
+    statTax: 1.2,
+    totalPrice: function() {
+        var calculation = purchase2.shoes * purchase2.stateTax;
+        console.log('Total price:' , calculation);
+    }
+}
+//total price method was almost the same in both the purchase1 and purchase2 objects
+//this means that you can improve the objects so both methods are identical
+//and you can do that by using "this" keyword which you may recall.
+
+// OOP paradigm "this" keyword example
+
+var purchase1 = {
+    shoes: 100,
+    stateTax: 1.2,
+    totalPrice: function() {
+        var calculation = this.shoes * this.statTax;
+        console.log('Total price;' , calculation);
+    }
+}
+//advantage is to have an alias of "this.keyword" helps not waste resources and remembering names

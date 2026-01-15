@@ -1,0 +1,13 @@
+// concat() method on two strings
+
+"abc".concat("def"); //'abcdef'
+
+// I can also use concat() method on two arrays
+
+["abc"].concat(["def"]); // ['abc', 'def']
+
+// Consider using the + operator ontwo arrays with one member each
+
+["abc"] + ["def"]; // "abc,def"
+
+//

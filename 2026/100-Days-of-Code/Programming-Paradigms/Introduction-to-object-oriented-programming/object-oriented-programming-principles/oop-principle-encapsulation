@@ -1,0 +1,3 @@
+// Ecapsulation example
+
+"abc".toUpperCase();

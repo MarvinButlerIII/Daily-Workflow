@@ -1,0 +1,5 @@
+// Here's an example of an inheritance hierarchy using the "extends" keyword in JavaScript
+
+class Animal { /* ... class code here... */ };
+class Mammal extends Animal { /* ...class code here... */ };
+class Elephant extends Mammal { /* ...class code here... */ };
