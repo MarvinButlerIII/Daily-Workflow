@@ -1,0 +1,25 @@
+// Examples of inheritance and how to build a prototype.
+
+var bird = {
+    hasWings: true,
+    canFly: true,
+    hasFeathers: true
+}
+var eagle1 = Object.create(bird);
+console.log("eagle1: ", eagle1);
+
+console.log("eagle1 has wings:", eagle1.hasWings);
+console.log("eagle1 can fly:", eagle1.canFly);
+console.log("eagle1 has feathers:", eagle1.hasFeathers);
+
+//I can build as many objects as I want they will all have the bird objects as their prototype.
+
+var eagle2 = Object.create(bird);
+console.log("eagle2 has wings:", eagle2.hasWings);
+
+var penguin1 = Object.create(bird);
+penguin1.canFly = false;
+console.log("penguin1", penguin1);
+console.log("penguin1 has feeathers:", penguin1.hasFeathers);
+console.log("penguin1 can fly:", penguin1.canFly);
+

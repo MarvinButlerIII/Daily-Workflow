@@ -1,0 +1,15 @@
+// Performace and Best Pratices with Constructors
+
+let apple = new String("apple");
+apple; // --> {"apple"}
+
+//the apple variable is an object of type string
+
+// How the apple object differs from the following pear variable.
+
+let pear = "pear";
+pear; // --> "pear"
+
+//the pear variable is a stron literal, that is a primitive JavaScript value.
+//the pear variable, being a primitive value, will always be more performant that apple variable, which is an objec
+

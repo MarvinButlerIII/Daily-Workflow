@@ -1,0 +1,12 @@
+// When building objects of other built-in types, we can use the constructor.
+
+new Date();
+new Error();
+new Map();
+new Promise();
+new Set();
+new WeakSet();
+new WeakMap();
+
+//the aboce list not exhaustive, but it's just trhere to give you an idea of some
+//constructor functions you can surely use.

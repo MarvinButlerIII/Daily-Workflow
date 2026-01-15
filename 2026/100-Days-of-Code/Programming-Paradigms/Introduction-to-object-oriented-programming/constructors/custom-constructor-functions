@@ -1,0 +1,18 @@
+// Defining custom constructor functions.
+
+function Icecream(flavor) {
+    this.flavor = flavor;
+    this.meltIt = function() {
+        console.log(`The ${this.flavor} icecream has melted`);
+    }
+}
+
+// Now I can make as many ice creams as I want
+
+let kiwiIcecream = new Icecream("kiwi");
+let appleIcecream = new Icecream("apple");
+kiwiIcecream; // --> Icecream {flavor: 'kiwi', meltIt: ƒ}
+appleIcecream; // --> Icecream {flavor: 'apple', meltIt: ƒ}
+
+//i've built two instance objects of Icecream type
+//most common use case of "new" is to use it with one of the built-in object types.

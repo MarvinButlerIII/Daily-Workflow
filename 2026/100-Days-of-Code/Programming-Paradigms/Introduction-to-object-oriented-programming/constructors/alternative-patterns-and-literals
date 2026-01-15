@@ -1,0 +1,4 @@
+// Pattern Literal example of using /d/ as a pattern literal passed-in as an argument to the match method on a string
+
+"abcd".match(/d/); // ['d', index: 3, input: 'abcd', groups: undefined]
+"abcd".match(/a/); // ['a', index: 0, input: 'abcd', groups: undefined]

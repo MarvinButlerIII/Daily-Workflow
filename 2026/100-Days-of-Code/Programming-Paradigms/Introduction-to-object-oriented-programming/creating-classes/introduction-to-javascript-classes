@@ -1,0 +1,96 @@
+// Define the Train class using the following syntax.
+class Train {
+    constructor(color,lightsOn) { // <-- Defined the constructor to build properties on future object instances of the Train class.
+        this.color = color;
+        this.lightsOn = lightsOn; // <-- only two object instances of the Train.
+    }
+    toggleLights() {
+        this.lightsOn = !this.lightsOn;
+    }
+    lightsStatus() {
+        console.log('Lights on?', this.lightsOn);
+    }
+    getSelf() {
+        console.log(this);
+    }
+    getPrototype() { // <-- now there are four methods on Train class.
+        var proto = Object.getPrototypeOf(this);
+        console.log(proto);
+    }
+}
+// Another class being coded called the super class or sub class with a bit different syntax the the constructor of HighSpeed Train class.
+class HighSpeedTrain extends Train {
+    constructor(passengers, highSpeedOn, color, lightsOn) {
+        super(color, lightsOn); // <-- super keyword is used to call the constructor of the super-class and initialize properties inherited from it in the sub-class
+        this.passengers = passengers;
+        this.highspeedOn = highSpeedOn;
+    }
+    toggleHighSpeed() { // <-- added another method that will be specific to the HighSpeedTrain class.
+        this.highSpeedOn = !this.highSpeedOn;
+        console.log('High speed status:', this.highSpeedOn);
+    }
+    toggleLights() {
+        super.toggleLights();
+        super.lightsStatus();
+        console.log('Lights are 100% operational.');
+    }
+}
+var myFirstTrain = new Train('red', false); // <-- variable new instance of train class, color property set to red and lightsOn property set to false.
+console.log(myFirstTrain); // Train {color: 'red', lightsOn: false}
+var mySecondTrain = new Train('blue', false);
+var myThirdTrain = new Train('blue', false); // <-- instances of the Train class
+
+var train4 = new Train('red', false);
+train4.toggleLights(); // undefined
+train4.lightsStatus(); // Lights on? true
+train4.getSelf(); // Train { color: 'red, lightsOn: true }
+train4.getPrototype(); // {constructor: f, toggleLights: f, lightsStatus: f, getSelf: f, getPrototype: f}
+
+var train5 = new Train('blue', false);
+var highSpeed1 = new HighSpeedTrain(200, false, 'green', false);
+
+train5.toggleLights(); // undefined
+train5.lightsStatus(); // Lights on? true
+highSpeed1.toggleLights(); // Lights on? true, Light are 100% operational.
+train5.getPrototype(); // {constructor: f, toggleLights: f, lightsStatus: f, getSelf: f, getPrototype: f}
+highSpeed1.getPrototype(); // Train {constructor: f, toggleHighSpeed: f, toggleLights: f}
+
+// Using class instance as another class' constructor's property.
+
+class StationaryBike {
+    constructor(position, gears) {
+        this.position = position
+        this.gears = gears
+    }
+}
+
+class Treadmill {
+    constructor(position, modes) {
+        this.position = position
+        this.modes = modes
+    }
+}
+
+class Gym {
+    constructor(openHrs, stationaryBikePos, treadmillPos) {
+        this.openHrs = openHrs
+        this.stationaryBike = new StationaryBike(stationaryBikePos, 8)
+        this.treadmill = new Treadmill(treadmillPos, 5)
+    }
+}
+
+var boxingGym = new Gym("7-22", "right corner", "left corner")
+
+console.log(boxingGym.openHrs) // 7-22
+console.log(boxingGym.stationaryBike) // StationaryBike { position: 'right corner', gears: 8 }
+console.log(boxingGym.treadmill) // Treadmill { position: 'left corner', modes: 5 }
+
+// In this example, there are three classes defined: StationaryBike, Treadmill, and Gym.
+// The StationaryBike class is coded so that its future object instance will have the position and gears properties. The position property describes where the stationary bike will be placed inside the gym, and the gears property gives the number of gears that that stationary bike should have.
+// The Treadmill class also has a position, and another property named modes (as in "exercise modes").
+// The Gym class has three parameters in its constructor function: openHrs, stationaryBikePos, treadmillPos.
+// This code allows me to instantiate a new instance object of the Gym class, and then when I inspect it, I get the following information:
+// the openHrs property is equal to "7-22" (that is, 7am to 10pm)
+// the stationaryBike property is an object of the StationaryBike type, containing two properties: position and gears
+// the treadmill property is an object of the Treadmill type, containing two properties: position and modes
+

@@ -29,3 +29,13 @@ kingPenguin.useWings(); // "Diving"
 //it with and additional console log.
 //Penguin sub-class doesn't inherit the useWings() method instead, it has its own implementation.
 //although the penguin class itself does extend the Bird class.
+
+// Using the skeleton of the code above, try creating some of your own classes
+
+class Lion extends Penguin {
+    useWings() {
+        console.log("Doesn't fly at all!");
+    }
+}
+var bigLion = new Lion();
+bigLion.useWings(); // "Flying" "Barely flapping!" "Diving" "Doesn't fly at all!" 
