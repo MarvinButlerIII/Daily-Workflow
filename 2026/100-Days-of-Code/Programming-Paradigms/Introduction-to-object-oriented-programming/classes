@@ -32,10 +32,10 @@ kingPenguin.useWings(); // "Diving"
 
 // Using the skeleton of the code above, try creating some of your own classes
 
-class Lion extends Penguin {
+class Cardinal extends Penguin {
     useWings() {
-        console.log("Doesn't fly at all!");
+        console.log("Flies beautiful in nature!");
     }
 }
-var bigLion = new Lion();
-bigLion.useWings(); // "Flying" "Barely flapping!" "Diving" "Doesn't fly at all!" 
+var redCardinal = new Cardinal();
+redCardinal.useWings(); // "Flying" "Barely flapping!" "Diving" "Doesn't fly at all!" 

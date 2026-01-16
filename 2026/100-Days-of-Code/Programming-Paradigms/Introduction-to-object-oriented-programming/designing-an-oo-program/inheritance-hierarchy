@@ -1,0 +1,189 @@
+/*   
+         Animal
+        /      \
+       cat    Bird
+      /   \       \      
+ HouseCat Tiger  Parrot
+
+
+// Based on above hierarchy I can code the Animal class like this
+
+class Animal {
+    // ... class code here ...
+}
+
+
+// Here's my coding requirements
+
+class Animal {
+    // constructor: color, energy
+    // isActive()
+        // if energy > 0, energy -=20, console log energy
+        // else if energy <=0, sleep()
+    // sleep()
+        // energy += 20
+        // console.log energy
+}
+class Cat extends Animal {
+    // constructor: sound, canJumpHigh, canClimbTrees, color, energy
+    // makeSound()
+        // console.log sound
+}
+class Bird extends Animal {
+    // constructor: sound, canFly, color, energy
+    // makeSound()
+        // console.log this.sound
+}
+class HouseCat extends Cat {
+    // constructor: houseCatSound, sound, canJumpHigh, canClimbTrees, color, energy
+    // makeSound()
+        // if (option)
+            // super.makeSound()
+        // console.log(houseCatSound)
+}
+class Tiger extends Cat {
+    // constructor: tigerSound, sound, canJumpHigh, canClimbTrees, color, energy
+    // makeSound()
+        // if (option)
+            // super.makeSound()
+    //console.log(tigerSound)
+}
+class Parrot extends Bird {
+    // constructor: canTalk, sound, canFly, color, energy
+    // makeSound()
+        // if (option)
+            // super.makeSound()
+        // if (canTalk)
+            // console.log("Talking!")
+}*/
+
+// Coding each class as per my specifications
+
+class Animal {
+    constructor(color = 'yellow', energy = 100) {
+        this.color = color;
+        this.energy = energy;
+    }
+    isActive() {
+        if(this.energy > 0) {
+            this.energy -= 20;
+            console.log('Energy is decreasing, currently at:', this.energy)
+        } else if(this.energy == 0) {
+            this.sleep();
+        }
+    }
+    sleep() {
+        this.energy += 20
+        console.log('Energy is increasing, currently at:', this.energy)
+    }
+    getColor() {
+        console.log(this.color)
+    }
+} // each animal object, no matter which one it is, will share the properties of color and energy.
+class Cat extends Animal {
+    constructor(sound = 'purr', canJumpHigh = true, canClimbTrees = true, color, energy) {
+        super(color, energy);
+        this.sound = sound;
+        this.canClimbTrees = canClimbTrees;
+        this.canJumpHigh = canJumpHigh;
+
+    }
+    makeSound() {
+        console.log(this.sound)
+    }   
+}
+class Bird extends Animal {
+    constructor(sound = 'chirp', canFly = true, color, energy) {
+        super(color, energy);
+        this.sound = sound;
+        this.canFly = canFly;
+    }
+    makeSound() {
+        console.log(this.sound)
+    }
+}
+class HouseCat extends Cat {
+    constructor(houseCatSound = "meow", sound, canJumpHigh = true, canClimbTrees = true, color, energy) {
+        super(sound,canJumpHigh,canClimbTrees, color,energy)
+        this.houseCatSound = houseCatSound;
+    }
+    // makeSound method takes a parameter `option`
+    makeSound(option) {
+        if (option) {
+            super.makeSound(); // Calls the parent class's makeSound if option is true
+        }
+        console.log(this.houseCatSound); // Always prints the HouseCat sound
+    }
+}
+class Tiger extends Cat {
+    constructor(tigerSound = "Roar", sound,canJumpHigh,canClimbTrees, color, energy) {
+        super(sound,canJumpHigh,canClimbTrees, color,energy)
+        this.tigersound = tigerSound;
+    }
+    makeSound(option) {
+        if (option) {
+            super.makeSound(); // Calls the parent class's makeSound if option is true
+        }
+        console.log(this.tigersound); // Always prints the Tiger sound
+    }
+
+}
+class Parrot extends Bird {
+    constructor(canTalk = false, sound,canFly, color, energy) {
+        super(sound,canFly, color,energy)
+        this.canTalk = canTalk;
+    }
+    makeSound(option) {
+        if (option) {
+            super.makeSound(); // Calls the parent class's makeSound if option is true
+        }
+        if (this.canTalk) {
+            console.log("I'm a talking parrot!"); // If canTalk is true, it talks
+        }
+    }
+}
+// In the HouseCat and Tiger classes, the makeSound() method requires a parameter (option) 
+// to determine wheter to invoke the parent class's makeSound() method
+// for example passing true invokes the parent class's makeSound() method, while false does not.
+// Similarly, for the Parrot class, the makeSound() method also takes an option parameter, 
+// and the functionality changes based on whether the canTalk() property is true
+
+// I can build two parrots: one that can talk and the other that can't.
+
+var polly = new Parrot(true); // we're passing `true` to the constructor so that polly can talk
+var fiji = new Parrot(false); // we're passing `false` to the constructor so that fiji can't talk
+
+polly.makeSound(); // 'chirp', 'I'm a talking parrot!'
+fiji.makeSound(); // 'chirp'
+
+polly.color; // yellow
+polly.energy; // 100
+
+polly.isActive(); // Energy is decreasing, currently at: 80
+
+var penguin = new Bird("shriek", false, "black and white", 200); // setting all the custom properties
+penguin; // Bird {color: 'black and white', energy: 200, sound: 'shriek', canFly: false }
+
+penguin.sound; // 'shriek'
+penguin.canFly; // false
+penguin.color; // 'black and white'
+penguin.energy; // 200
+penguin.isActive(); // Energy is decreasing, currently at: 180
+
+// Also, can build a pet cat
+
+var leo = new HouseCat();
+
+// leo, no purring please:
+leo.makeSound(false); // meow
+
+// leo, both purr and meow now:
+leo.makeSound(true); // purr, meow
+
+// Additionally, I can buildl a tiger
+
+var cuddles = new Tiger();
+
+// cuddles tiger can purr and roear, or just roar
+cuddles.makeSound(false); // Roar!
+cuddles.makeSound(true); // purr, Roar!
